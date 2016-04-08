@@ -3,12 +3,14 @@
 <table style="width:50%">
   <% @posts.each do |post| %>
       <tr>
-        <td><%= post.text %></td>
-        <% if post.user.fullname == nil %>
-         <td>mo user</td>
+        <td><%= link_to post.text, post_path(post) %> </td>
+        <% if post.user_id == nil %>
+         <td>No user added </td>
         <% else %>
-            <td> <%= link_to post.user.fullname , edit_post_path(post) %></td>
+            #TODO
         <% end%>
+
+        <td> <%= link_to 'Edit', edit_post_path(post) %></td>
       </tr>
   <%end%>
   <td> <%= link_to 'New post' , new_post_path %></td>

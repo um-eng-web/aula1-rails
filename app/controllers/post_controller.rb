@@ -8,7 +8,11 @@ class PostController < ApplicationController
   end
 
   def show
-    @post = Post.find(2)
+    @post = Post.find(params[:id])
+  end
+
+  def edit
+    @post = Post.find(params[:id])
   end
 
   def create
@@ -24,7 +28,7 @@ class PostController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    if @post.update_attributes(params[:post])
+    if @post.update_attributes(:text => params[:post][:text])
       flash[:notice] = "Update sucessfull"
       redirect_to post_path
     else
