@@ -1,0 +1,7 @@
+<h1>Posts#new</h1>
+
+<%= form_for @post, url: {action: "create"} do |p| %>
+    <%= p.label :label %>
+    <%= p.text_field :text %>
+    <%= p.submit "Post" %>
+<% end %>

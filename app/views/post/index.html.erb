@@ -1,0 +1,17 @@
+<h1>Posts#index</h1>
+
+<table style="width:50%">
+  <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.text %></td>
+        <% if post.user.fullname == nil %>
+         <td>mo user</td>
+        <% else %>
+            <td> <%= link_to post.user.fullname , edit_post_path(post) %></td>
+        <% end%>
+      </tr>
+  <%end%>
+  <td> <%= link_to 'New post' , new_post_path %></td>
+
+</table>
+

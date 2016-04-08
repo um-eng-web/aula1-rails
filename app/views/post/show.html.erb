@@ -1,0 +1,4 @@
+<h1>Post#show</h1>
+
+<p><%= @post.text %> | posted by <%= @post.user.fullname %></p>
+<p><%= link_to 'Edit', edit_post_path(@post) %> </p>
