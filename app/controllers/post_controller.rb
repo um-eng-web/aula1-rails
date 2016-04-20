@@ -1,6 +1,16 @@
 class PostController < ApplicationController
+  before_save :check_fullname
+  after_destroy :log_destroy
+  after_update :log_update
+  
+  scope :recent, order("created_at desc").limit(4)
+  scope :john, where("fullname = 'Joao")
+  
+ 
+  
   def new
     @post = Post.new
+    
   end
 
   def index
@@ -9,6 +19,7 @@ class PostController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @posts_john_recent = Post.john.recent
   end
 
   def edit
@@ -36,5 +47,23 @@ class PostController < ApplicationController
       render 'edit'
     end
   end
+  
+  private
+  def check_fullname
+    if self.fullname?
+      true
+    else
+      false
+    end
+  end
+  
+  def log_update
+    logger.info "Post #{id} updated"
+  end
 
+  def log_destroy
+    logger.info "Post #{id} deleted"
+  end
+  
+  
 end

@@ -14,3 +14,21 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+function initialize(){
+    var source = new EventSource('/alerts');
+    source.addEventListener('message', function update(event){
+        var div = $('<div>').text(event.data);
+        $('#alerts').append(div);
+        });
+}
+
+function clickAlert(event){
+    if (event.target.checked){
+        alert("You can reade the alert now");
+    }
+}
+
+$(document).ready(initialize);
+$(document).on(initialize);
+$(document).on('click', '#alert_resolved', clickAlert);
