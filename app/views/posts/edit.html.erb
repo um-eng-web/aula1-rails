@@ -2,7 +2,7 @@
 <h1>Posts#edit</h1>
 
 <%= form_for @post, url: {action: 'update'} do |p| %>
-    <%= p.label :post %>
+    <%= p.label :posts %>
     <%= p.text_field :text %>
     <%= p.submit "Update" %>
 <% end %>

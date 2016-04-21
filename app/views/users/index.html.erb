@@ -1,0 +1,21 @@
+<h1> Users index </h1>
+
+<div id="users">
+  <%= render @users %>
+</div>
+
+<%= form_for(User.new, remote: true) do |f| %>
+    <div class="field">
+      <%= f.label :fullname %><br />
+      <%= f.text_field :fullname %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>
+
+
+
+
+
+

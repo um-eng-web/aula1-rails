@@ -1,0 +1,11 @@
+<% @users.each do |user| %>
+    <%= div_for user do %>
+        <%= link_to user.fullname, user_path(user) %>
+        <div class="actions">
+          <%= link_to 'Edit', edit_user_path(user) %>
+          <%= link_to 'Delete', user, method: :delete, remote: true %>
+        </div>
+    <%end%>
+<%end%>
+
+
